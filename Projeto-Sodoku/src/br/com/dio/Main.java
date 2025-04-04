@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
-import static br.com.dio.util.BoardTemplate.BOARD_TEMPLATE;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static java.util.stream.Collectors.toMap;
@@ -21,6 +20,22 @@ public class Main {
     private static Board board;
 
     private final static int BOARD_LIMIT = 9;
+
+    private final static String BOARD_TEMPLATE = """
+            +-------+-------+-------+
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            +-------+-------+-------+
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            +-------+-------+-------+
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            | %s %s %s | %s %s %s | %s %s %s |
+            +-------+-------+-------+
+            """;
 
     public static void main(String[] args) {
         final var positions = Stream.of(args)
@@ -73,7 +88,7 @@ public class Main {
                     var currentSpace = new Space(expected, fixed);
                     spaces.get(i).add(currentSpace);
                 } else {
-                    spaces.get(i).add(new Space(0, false)); // Default space if no configuration is provided
+                    spaces.get(i).add(new Space(0, false)); // Default value for empty positions
                 }
             }
         }
